@@ -22,11 +22,11 @@ clean:
 	find . -name "*.bcf" -type f -delete;
 
 handout:
-	pdflatex tutorial-handout
-	bibtex tutorial-handout
-	pythontex tutorial-handout
-	pdflatex tutorial-handout
-	pdflatex tutorial-handout
+	pdflatex handout
+	bibtex handout
+	pythontex handout
+	pdflatex handout
+	pdflatex handout
 
 update:
-	pdflatex tutorial-handout
+	pdflatex handout
