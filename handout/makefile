@@ -1,11 +1,11 @@
 .PHONY: all
 
-all: clean handout
+all: clean figs handout
 
 clean:
-	find . -name "*.pytxcode" -type f -delete			\
-	find . -name "*.lopytx" -type f -delete				\
-	find . -name "pythontex-files-*" -type f -delete	\
+	find . -name "*.pytxcode" -type f -delete;			\
+	find . -name "*.lopytx" -type f -delete;			\
+	find . -name "pythontex-files-*" -type f -delete;	\
 	find . -name "*.aux" -type f -delete;				\
 	find . -name "*.toc" -type f -delete;				\
 	find . -name "*.lot" -type f -delete;				\
@@ -21,7 +21,11 @@ clean:
 	find . -name "*.run.xml" -type f -delete;			\
 	find . -name "*.bcf" -type f -delete;
 
-handout:
+figs:
+	cd data; \
+	ls ./*.py|xargs -n 1 -P 2 python
+
+handout: figs
 	pdflatex handout
 	bibtex handout
 	pythontex handout
