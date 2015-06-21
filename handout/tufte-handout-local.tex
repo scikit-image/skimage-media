@@ -13,7 +13,6 @@
   % Set up fancyvrb
   \fvset{fontsize=\normalsize}% default font size for fancyvrb environments
 \usepackage{xspace}      % smart spacing for use at end of macros
-\usepackage{pythontex}   %
 
 
 % -------------------------------------------------------------------------- %
@@ -29,9 +28,50 @@
 
 
 % -------------------------------------------------------------------------- %
-% Slightly tweak page layout so title fits on one line
-\newgeometry{textwidth=27pc,
-             marginparwidth=11pc}
+% Set up colors for URLs
+\PassOptionsToPackage{colorlinks=true,
+                      urlcolor=DarkBlue,
+                      unicode,
+                      hyperfootnotes=false,
+                      pdfborder = {0 0 0},
+                      bookmarksdepth = section,
+                      citecolor = DarkGreen,
+                      linkcolor = DarkBlue,
+                      }{hyperref}
+\usepackage{hyperref}
+
+
+%--------------------------------------------------------------------------- %
+% Source code highlighting & customizations with PythonTeX
+
+% Set necessary offset so line numbers do not infringe on left margin
+% This assumes the max line number is 4 digits wide
+\newlength{\CodeNumberPadding}
+\setlength{\CodeNumberPadding}{5pt}
+\newlength{\MaxSizeOfLineNumbers}
+\settowidth{\MaxSizeOfLineNumbers}{\tiny{9999}}  % Max number of digits
+\addtolength{\MaxSizeOfLineNumbers}{\CodeNumberPadding}
+
+% Load the package
+\usepackage[gobble=auto]{pythontex}
+\usepackage{relsize}  % For relative sizing
+
+% Global PythonTeX typesetting preferences
+\setpythontexfv{numbers=left,
+                numbersep=\CodeNumberPadding,
+                frame=leftline,
+                framesep=\CodeNumberPadding,
+                rulecolor=\color{gray},
+                xleftmargin=\MaxSizeOfLineNumbers,
+                fontsize=\normalsize,
+                baselinestretch=1.1  % Single space source code
+                }
+
+% Set working directory
+\setpythontexworkingdir{.}
+
+% Redefine code line numbers to lighten them from black to gray
+\renewcommand{\theFancyVerbLine}{\textcolor{gray}{\tiny{\arabic{FancyVerbLine}}}}
 
 
 % -------------------------------------------------------------------------- %

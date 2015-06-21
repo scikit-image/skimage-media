@@ -2,21 +2,35 @@
 % Style used is derived from the tufte-handout style available on GitHub at
 % https://github.com/Tufte-LaTeX/tufte-latex
 % License: Apache 2.0
-\documentclass{tufte-handout}
+\documentclass[nohyper, % Turn off defaults, customize hyperref locally
+               ]{tufte-handout}
 
 % -------------------------------------------------------------------------- %
 % Define document-specific macros here
-\newcommand{\ski}{\texttt{scikit-image}\xspace}
-\newcommand{\sp}{SciPy\xspace}
-\newcommand{\np}{NumPy\xspace}
+\DeclareRobustCommand{\ski}{\texttt{scikit-image}\xspace}
+\DeclareRobustCommand{\spy}{SciPy\xspace} % Sadly, \sp is reserved (superscript)
+\DeclareRobustCommand{\np}{NumPy\xspace}
+% \newcommand{\release}{\pyc{import skimage;print(skimage.__version__)}\xspace}
+\newcommand{\release}{0.11.3\xspace}
 
 % -------------------------------------------------------------------------- %
 % Definitions used throughout the package
-\title{\ski: the image processing toolkit for \sp}
+\title{\ski: the image processing toolkit for \spy}
 \author[the \ski contributors]{the \ski contributors}
 \date{6 July 2015} % Specify date, or comment out to use current date
 
 % -------------------------------------------------------------------------- %
+% Slightly tweak page layout so title fits on one line
+\newgeometry{textwidth=27pc,      % 1pc wider than default
+             marginparwidth=11pc, % 1pc narrower than default
+             letterpaper,
+             left=1in,
+             top=1in,
+             headsep=2\baselineskip,
+             marginparsep=2pc,
+             textheight=44\baselineskip,
+             headheight=\baselineskip}
+
 % Layout debugging
 % \geometry{showframe} % uncomment to debug page layout
 
@@ -26,27 +40,34 @@
 
 \maketitle% tufte-handout command: prints title, author, and date
 
-% Stay on brand ;)
+% Stay on brand
 \begin{marginfigure}[-3cm]%
-  \includegraphics[width=\linewidth]{graphics/sticker_00.png}
+  \includegraphics[width=\linewidth]{sticker_00.png}
   \label{fig:skimage_logo}
 \end{marginfigure}
 
+% Explain purpose
+\indent
+Welcome to \ski! This handout is designed to supplement and enhance the \ski tutorial materials, hosted on GitHub at \url{http://github.com/scikit-image/skimage-tutorials}. Our goal is to orient you to the package and provide you with a quick reference to common functions, so you can be as productive as possible as fast as possible!
 
-\begin{abstract}
-% \noindent
-Welcome to \ski! This handout is designed to supplement the \ski tutorial materials, located online at \texttt{http://github.com/scikit-image/skimage-tutorials}. Our goal is to provide you with a quick reference to common functions as well as provide you with a roadmap of the package, so you can be as productive as possible as fast as possible.
-\end{abstract}
+\section{Beginnings} % (fold)
+  \label{sec:Beginnings}
+  Most of the functionality in \ski\marginnote{Unlike \textsc{matlab}, functions are grouped into \textit{subpackages} in \ski} is located in \textit{subpackages}. This is similar to how \spy works. The reverse side of this handout has details about \ski subpackages available in version \release.
 
-%\printclassoptions
+  \subsection{Images are arrays} % (fold)
+    \label{sub:images_are_arrays}
+    \begin{marginfigure}[0.6cm]%
+      \includegraphics[width=\linewidth]{tux_inset.png}
+      \label{fig:tux_inset}
+    \end{marginfigure}
+    An image is simply a collection of data on a regular two-dimensional grid. In \ski, we use \np arrays to represent images. Color images have more than one channel, typicall red, green, and blue (RGB). If present the \np array is three-dimensional, with channel information in the final dimension.
+    % subsection images_are_arrays (end)
 
-The Tufte-\LaTeX\ document classes define a style similar to the
-style Edward Tufte uses in his books and handouts.  Tufte's style is known
-for its extensive use of sidenotes, tight integration of graphics with
-text, and well-set typography.  This document aims to be at once a
-demonstration of the features of the Tufte-\LaTeX\ document classes
-and a style guide to their use.
-
+  \subsection{Talking our language} % (fold)
+    \label{sub:talking_our_language}
+    To avoid confusion, we refrain from using the terms \textit{x} or \textit{y}. Throughout the package, \ski refers to \textit{rows} (r) and \textit{columns} (c). When color data is present, \textit{channel} (`ch') denotes the third dimension. Indexing a \np array occurs via \pyv{arr[rows, columns]}.
+    % subsection talking_our_language (end)
+  % section road_map_ (end)
 \section{Page Layout}\label{sec:page-layout}
 \subsection{Headings}\label{sec:headings}
 This style provides \textsc{a}- and \textsc{b}-heads (that is,
@@ -280,9 +301,7 @@ The website for the Tufte-\LaTeX\ packages is located at
 \url{https://github.com/Tufte-LaTeX/tufte-latex}.  On our website, you'll find
 links to our \smallcaps{svn} repository, mailing lists, bug tracker, and documentation.
 
-\bibliography{sample-handout}
+\bibliography{bibliography}
 \bibliographystyle{plainnat}
-
-
 
 \end{document}
