@@ -12,6 +12,7 @@
 \DeclareRobustCommand{\np}{NumPy\xspace}
 % \newcommand{\release}{\pyc{import skimage;print(skimage.__version__)}\xspace}
 \newcommand{\release}{0.11.3\xspace}
+\newcommand{\eg}{e.g.\xspace}
 
 % -------------------------------------------------------------------------- %
 % Definitions used throughout the package
@@ -32,7 +33,7 @@
              headheight=\baselineskip}
 
 % Layout debugging
-% \geometry{showframe} % uncomment to debug page layout
+% \usepackage{showframe} % uncomment to debug page layout
 
 % -------------------------------------------------------------------------- %
 % Begin!
@@ -41,33 +42,44 @@
 \maketitle% tufte-handout command: prints title, author, and date
 
 % Stay on brand
-\begin{marginfigure}[-3cm]%
-  \includegraphics[width=\linewidth]{sticker_00.png}
+\begin{marginfigure}[-0.1cm]%
+  \includegraphics[width=\linewidth]{green_orange_snake.png}
   \label{fig:skimage_logo}
 \end{marginfigure}
 
 % Explain purpose
-\indent
 Welcome to \ski! This handout is designed to supplement and enhance the \ski tutorial materials, hosted on GitHub at \url{http://github.com/scikit-image/skimage-tutorials}. Our goal is to orient you to the package and provide you with a quick reference to common functions, so you can be as productive as possible as fast as possible!
 
-\section{Beginnings} % (fold)
-  \label{sec:Beginnings}
-  Most of the functionality in \ski\marginnote{Unlike \textsc{matlab}, functions are grouped into \textit{subpackages} in \ski} is located in \textit{subpackages}. This is similar to how \spy works. The reverse side of this handout has details about \ski subpackages available in version \release.
+\subsection{Where are my functions?} % (fold)
+  \label{sec:Where_are_my_functions}
+  Most of the functionality in \ski\marginnote[-0.1cm]{Unlike \textsc{matlab}, functions are grouped into \textit{subpackages} in \ski.} is located in \textit{subpackages}. This is similar to how \spy works. The reverse side of this handout has details about \ski subpackages available in version \release.
+  % section Where_are_my_functions (end)
 
-  \subsection{Images are arrays} % (fold)
-    \label{sub:images_are_arrays}
-    \begin{marginfigure}[0.6cm]%
-      \includegraphics[width=\linewidth]{tux_inset.png}
-      \label{fig:tux_inset}
-    \end{marginfigure}
-    An image is simply a collection of data on a regular two-dimensional grid. In \ski, we use \np arrays to represent images. Color images have more than one channel, typicall red, green, and blue (RGB). If present the \np array is three-dimensional, with channel information in the final dimension.
-    % subsection images_are_arrays (end)
+\subsection{Images are arrays} % (fold)
+  \label{sub:images_are_arrays}
 
-  \subsection{Talking our language} % (fold)
-    \label{sub:talking_our_language}
-    To avoid confusion, we refrain from using the terms \textit{x} or \textit{y}. Throughout the package, \ski refers to \textit{rows} (r) and \textit{columns} (c). When color data is present, \textit{channel} (`ch') denotes the third dimension. Indexing a \np array occurs via \pyv{arr[rows, columns]}.
-    % subsection talking_our_language (end)
-  % section road_map_ (end)
+  \begin{marginfigure}[0.4cm]%
+    \includegraphics[width=\linewidth]{tux_inset.png}
+    \label{fig:tux_inset}
+  \end{marginfigure}
+
+  An image is simply a collection of data on a regular, two-dimensional grid. In \ski, we use \np arrays to represent images. Color images have more than one channel, \eg, red, green, and blue (RGB). Thus, the \np array for a color image is three-dimensional, with channel information in the final dimension.
+  % subsection images_are_arrays (end)
+
+\subsection{Talking our language} % (fold)
+  \label{sub:talking_our_language}
+  To avoid confusion, we refrain from using the terms \textit{x} or \textit{y}. Throughout the package, \ski refers to \textit{rows} (r) and \textit{columns} (c). When color data is present, \textit{channel} (ch) denotes the third dimension. \np arrays representing images are indexed via \pyv{arr[rows, columns]}.
+
+  \begin{marginfigure}[-1.3cm]%
+    \includegraphics[width=\linewidth]{row-col.png}
+    \label{fig:row-col}
+  \end{marginfigure}
+  % subsection talking_our_language (end)
+
+\subsection{Potential} % (fold)
+  \label{sub:potential}
+
+  % subsection potential (end)
 \section{Page Layout}\label{sec:page-layout}
 \subsection{Headings}\label{sec:headings}
 This style provides \textsc{a}- and \textsc{b}-heads (that is,
@@ -256,51 +268,7 @@ If the Palatino, \textsf{Helvetica}, and \texttt{Bera Mono} typefaces are instal
 will use them automatically.  Otherwise, we'll fall back on the Computer Modern
 typefaces.
 
-\subsection{Letterspacing}\label{sec:letterspacing}
-This document class includes two new commands and some improvements on
-existing commands for letterspacing.
-
-When setting strings of \allcaps{ALL CAPS} or \smallcaps{small caps}, the
-letter\-spacing---that is, the spacing between the letters---should be
-increased slightly.\cite{Bringhurst2005}  The \Verb|\allcaps| command has proper letterspacing for
-strings of \allcaps{FULL CAPITAL LETTERS}, and the \Verb|\smallcaps| command
-has letterspacing for \smallcaps{small capital letters}.  These commands
-will also automatically convert the case of the text to upper- or
-lowercase, respectively.
-
-The \Verb|\textsc| command has also been redefined to include
-letterspacing.  The case of the \Verb|\textsc| argument is left as is,
-however.  This allows one to use both uppercase and lowercase letters:
-\textsc{The Initial Letters Of The Words In This Sentence Are Capitalized.}
-
-
-
-\section{Installation}\label{sec:installation}
-To install the Tufte-\LaTeX\ classes, simply drop the
-following files into the same directory as your \texttt{.tex}
-file:
-\begin{quote}
-  \ttfamily
-  tufte-book.cls\\
-  tufte-common.def\\
-  tufte-handout.cls\\
-  tufte.bst
-\end{quote}
-
-% TODO add instructions for installing it globally
-
-
-
-\section{More Documentation}\label{sec:more-doc}
-For more documentation on the Tufte-\LaTeX{} document classes (including commands not
-mentioned in this handout), please see the sample book.
-
-\section{Support}\label{sec:support}
-
-The website for the Tufte-\LaTeX\ packages is located at
-\url{https://github.com/Tufte-LaTeX/tufte-latex}.  On our website, you'll find
-links to our \smallcaps{svn} repository, mailing lists, bug tracker, and documentation.
-
+% Consider dropping this at the end of the 1st page?
 \bibliography{bibliography}
 \bibliographystyle{plainnat}
 
