@@ -1,6 +1,9 @@
 ## Macintosh detritus
 *.DS_Store
 
+## IPython autosaves
+*.ipynb_checkpoints*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
