@@ -76,197 +76,56 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
   \end{marginfigure}
   % subsection talking_our_language (end)
 
-\subsection{Potential} % (fold)
-  \label{sub:potential}
+\subsection{See also} % (fold)
+  \label{sub:see_also}
 
-  % subsection potential (end)
-\section{Page Layout}\label{sec:page-layout}
-\subsection{Headings}\label{sec:headings}
-This style provides \textsc{a}- and \textsc{b}-heads (that is,
-\Verb|\section| and \Verb|\subsection|), demonstrated above.
+  % subsection see_also (end)
 
-The Tufte-\LaTeX\ classes will emit an error if you try to use
-\linebreak\Verb|\subsubsection| and smaller headings.
+\newpage
+\section{Road map to \ski} % (fold)
+  \label{sec:road_map}
+  \textsc{For the new user} -- who may be accustomed to having all functionality available from the main namespace like \np or \textsc{matlab} -- finding your way around may be intimidating. Below are brief descriptions of each subpackage available in \ski \release, which group features used for common purposes.
 
-% let's start a new thought -- a new section
-\newthought{In his later books},\cite{Tufte2006} Tufte
-starts each section with a bit of vertical space, a non-indented paragraph,
-and sets the first few words of the sentence in \textsc{small caps}.  To
-accomplish this using this style, use the \Verb|\newthought| command:
-\begin{docspec}
-  \doccmd{newthought\{In his later books\}, Tufte starts\ldots}
-\end{docspec}
+  \begin{marginfigure}[1.9cm]%
+    \includegraphics[width=\linewidth]{astronaut.png}
+    \label{fig:astronaut}
+  \end{marginfigure}
 
-\subsection{Sidenotes}\label{sec:sidenotes}
-One of the most prominent and distinctive features of this style is the
-extensive use of sidenotes.  There is a wide margin to provide ample room
-for sidenotes and small figures.  Any \Verb|\footnote|s will automatically
-be converted to sidenotes.\footnote{This is a sidenote that was entered
-using the \texttt{\textbackslash footnote} command.}  If you'd like to place ancillary
-information in the margin without the sidenote mark (the superscript
-number), you can use the \Verb|\marginnote| command.\marginnote{This is a
-margin note.  Notice that there isn't a number preceding the note, and
-there is no number in the main text where this note was written.}
-
-The specification of the \Verb|\sidenote| command is:
-\begin{docspec}
-  \doccmd{sidenote[\docopt{number}][\docopt{offset}]\{\docarg{Sidenote text.}\}}
-\end{docspec}
-
-Both the \docopt{number} and \docopt{offset} arguments are optional.  If you
-provide a \docopt{number} argument, then that number will be used as the
-sidenote number.  It will change of the number of the current sidenote only and
-will not affect the numbering sequence of subsequent sidenotes.
-
-Sometimes a sidenote may run over the top of other text or graphics in the
-margin space.  If this happens, you can adjust the vertical position of the
-sidenote by providing a dimension in the \docopt{offset} argument.  Some
-examples of valid dimensions are:
-\begin{docspec}
-  \ttfamily 1.0in \qquad 2.54cm \qquad 254mm \qquad 6\Verb|\baselineskip|
-\end{docspec}
-If the dimension is positive it will push the sidenote down the page; if the
-dimension is negative, it will move the sidenote up the page.
-
-While both the \docopt{number} and \docopt{offset} arguments are optional, they
-must be provided in order.  To adjust the vertical position of the sidenote
-while leaving the sidenote number alone, use the following syntax:
-\begin{docspec}
-  \doccmd{sidenote[][\docopt{offset}]\{\docarg{Sidenote text.}\}}
-\end{docspec}
-The empty brackets tell the \Verb|\sidenote| command to use the default
-sidenote number.
-
-If you \emph{only} want to change the sidenote number, however, you may
-completely omit the \docopt{offset} argument:
-\begin{docspec}
-  \doccmd{sidenote[\docopt{number}]\{\docarg{Sidenote text.}\}}
-\end{docspec}
-
-The \Verb|\marginnote| command has a similar \docarg{offset} argument:
-\begin{docspec}
-  \doccmd{marginnote[\docopt{offset}]\{\docarg{Margin note text.}\}}
-\end{docspec}
-
-\subsection{References}
-References are placed alongside their citations as sidenotes,
-as well.  This can be accomplished using the normal \Verb|\cite|
-command.\sidenote{The first paragraph of this document includes a citation.}
-
-The complete list of references may also be printed automatically by using
-the \Verb|\bibliography| command.  (See the end of this document for an
-example.)  If you do not want to print a bibliography at the end of your
-document, use the \Verb|\nobibliography| command in its place.
-
-To enter multiple citations at one location,\cite{Tufte2006,Tufte1990} you can
-provide a list of keys separated by commas and the same optional vertical
-offset argument: \Verb|\cite{Tufte2006,Tufte1990}|.
-\begin{docspec}
-  \doccmd{cite[\docopt{offset}]\{\docarg{bibkey1,bibkey2,\ldots}\}}
-\end{docspec}
-
-\section{Figures and Tables}\label{sec:figures-and-tables}
-Images and graphics play an integral role in Tufte's work.
-In addition to the standard \docenv{figure} and \docenv{tabular} environments,
-this style provides special figure and table environments for full-width
-floats.
-
-Full page--width figures and tables may be placed in \docenv{figure*} or
-\docenv{table*} environments.  To place figures or tables in the margin,
-use the \docenv{marginfigure} or \docenv{margintable} environments as follows
-(see figure~\ref{fig:marginfig}):
-
-\begin{marginfigure}%
-  \includegraphics[width=\linewidth]{helix}
-  \caption{This is a margin figure.  The helix is defined by
-    $x = \cos(2\pi z)$, $y = \sin(2\pi z)$, and $z = [0, 2.7]$.  The figure was
-    drawn using Asymptote (\url{http://asymptote.sf.net/}).}
-  \label{fig:marginfig}
-\end{marginfigure}
-\begin{Verbatim}
-\begin{marginfigure}
-  \includegraphics{helix}
-  \caption{This is a margin figure.}
-\end{marginfigure}
-\end{Verbatim}
-
-The \docenv{marginfigure} and \docenv{margintable} environments accept an optional parameter \docopt{offset} that adjusts the vertical position of the figure or table.  See the ``\nameref{sec:sidenotes}'' section above for examples.  The specifications are:
-\begin{docspec}
-  \doccmd{begin\{marginfigure\}[\docopt{offset}]}\\
-  \qquad\ldots\\
-  \doccmd{end\{marginfigure\}}\\
-  \mbox{}\\
-  \doccmd{begin\{margintable\}[\docopt{offset}]}\\
-  \qquad\ldots\\
-  \doccmd{end\{margintable\}}\\
-\end{docspec}
-
-Figure~\ref{fig:fullfig} is an example of the \Verb|figure*|
-environment and figure~\ref{fig:textfig} is an example of the normal
-\Verb|figure| environment.
-
-\begin{figure*}[h]
-  \includegraphics[width=\linewidth]{sine.pdf}%
-  \caption{This graph shows $y = \sin x$ from about $x = [-10, 10]$.
-  \emph{Notice that this figure takes up the full page width.}}%
-  \label{fig:fullfig}%
-\end{figure*}
-
-\begin{figure}
-  \includegraphics{hilbertcurves.pdf}
-%  \checkparity This is an \pageparity\ page.%
-  \caption{Hilbert curves of various degrees $n$.
-  \emph{Notice that this figure only takes up the main textblock width.}}
-  \label{fig:textfig}
-  %\zsavepos{pos:textfig}
-  \setfloatalignment{b}
-\end{figure}
-
-Table~\ref{tab:normaltab} shows table created with the \docpkg{booktabs}
-package.  Notice the lack of vertical rules---they serve only to clutter
-the table's data.
-
-\begin{table}[ht]
-  \centering
-  \fontfamily{ppl}\selectfont
-  \begin{tabular}{ll}
-    \toprule
-    Margin & Length \\
-    \midrule
-    Paper width & \unit[8\nicefrac{1}{2}]{inches} \\
-    Paper height & \unit[11]{inches} \\
-    Textblock width & \unit[6\nicefrac{1}{2}]{inches} \\
-    Textblock/sidenote gutter & \unit[\nicefrac{3}{8}]{inches} \\
-    Sidenote width & \unit[2]{inches} \\
-    \bottomrule
-  \end{tabular}
-  \caption{Here are the dimensions of the various margins used in the Tufte-handout class.}
-  \label{tab:normaltab}
-  %\zsavepos{pos:normaltab}
-\end{table}
-
-\section{Full-width text blocks}
-
-In addition to the new float types, there is a \docenv{fullwidth}
-environment that stretches across the main text block and the sidenotes
-area.
-
-\begin{Verbatim}
-\begin{fullwidth}
-Lorem ipsum dolor sit amet...
-\end{fullwidth}
-\end{Verbatim}
-
-\begin{fullwidth}
-\small\itshape\lipsum[1]
-\end{fullwidth}
-
-\section{Typography}\label{sec:typography}
-
-\subsection{Typefaces}\label{sec:typefaces}
-If the Palatino, \textsf{Helvetica}, and \texttt{Bera Mono} typefaces are installed, this style
-will use them automatically.  Otherwise, we'll fall back on the Computer Modern
-typefaces.
+  \begin{description}
+    \item[\pyv{skimage.color}] \textit{Color conversions.}
+    \begin{description}
+      \item[\pyv{rgb2gray}] Convert a red-green-blue color image to grayscale.
+      \item[\pyv{separate_stains}] Decompose color image into pathology stains.
+    \end{description}
+    \item[\pyv{skimage.data}] \textit{Test images.}
+    \begin{description}
+      \item[\pyv{astronaut}] Image of the astronaut Eileen Collins\footnote[1][-0.3cm]{The \texttt{astronaut} test image. Please use this image in place of \texttt{lena}.}.
+      \item[\pyv{camera}] The ever--present cameraman.
+    \end{description}
+    \item[\pyv{skimage.draw}] \textit{Drawing primitives such as lines or text.}
+    \item[\pyv{skimage.exposure}] \textit{Intensity and contrast adjustments.}
+    \item[\pyv{skimage.feature}] \textit{Feature detection and extraction.}
+    \item[\pyv{skimage.filters}] \textit{Whole-image changes like sharpening.}
+    \item[\pyv{skimage.future}] \textit{The bleeding edge, with potentially unstable API}
+    \item[\pyv{skimage.graph}] \textit{Graph theory, shortest cost paths.}
+    \item[\pyv{skimage.io}] \textit{Read, save, and display images.}
+    \item[\pyv{skimage.measure}] \textit{Quantify image properties (length, shape).}
+    \item[\pyv{skimage.morphology}] \textit{Morphological operations like erosion and dilation.}
+    \item[\pyv{skimage.novice}] \textit{Simplified teaching interface.}
+    \item[\pyv{skimage.restoration}] \textit{Remove noise or deconvolve images.}
+    \item[\pyv{skimage.segmentation}] \textit{Partition an image into multiple regions.}
+    \item[\pyv{skimage.transform}] \textit{Warp or rotate images.}
+    \begin{description}
+      \item[\pyv{radon/iradon}] The Radon transform and its inverse.
+    \end{description}
+    \item[\pyv{skimage.util}] \textit{Common public utility functions.}
+    \begin{description}
+      \item[\pyv{random_noise}] Make an existing image noisy.
+      \item[\pyv{pad/crop}] Fast array padding/cropping.
+    \end{description}
+    \item[\pyv{skimage.viewer}] \textit{QT-based interactive GUI.}
+  \end{description}
+  % section road_map (end)
 
 % Consider dropping this at the end of the 1st page?
 \bibliography{bibliography}
