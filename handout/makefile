@@ -31,6 +31,10 @@ handout: figs
 	pythontex handout
 	pdflatex handout
 	pdflatex handout
+	pdflatex trim-handout
+	mv -f ./trim-handout.pdf ./handout.pdf
 
 update:
 	pdflatex handout
+	pdflatex trim-handout
+	mv -f ./trim-handout.pdf ./handout.pdf
