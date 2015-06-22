@@ -28,8 +28,8 @@ if __name__ == '__main__':
         ax.spines[side].set_visible(False)
 
     # Label appropriately
-    ax.set_ylabel('Columns')
-    ax.set_xlabel('Rows', labelpad=9)
+    ax.set_ylabel('Rows')
+    ax.set_xlabel('Columns', labelpad=9)
     ax.xaxis.set_label_position('top')
 
     # Generate arrows
