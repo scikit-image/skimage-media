@@ -48,7 +48,7 @@
 \end{marginfigure}
 
 % Explain purpose
-Welcome to \ski! This handout is designed to supplement and enhance the \ski tutorial materials, hosted on GitHub at \url{http://github.com/scikit-image/skimage-tutorials}. Our goal is to orient you to the package and provide you with a quick reference to common functions, so you can be as productive as possible as fast as possible!
+Welcome to \ski! This handout is designed to supplement and enhance the \ski tutorial materials, hosted on GitHub at \url{http://github.com/scikit-image/skimage-tutorials}. Our goal is to orient you to the package and provide you with a quick reference to common functions, so you can be as productive as possible!
 
 \subsection{Where are my functions?} % (fold)
   \label{sec:Where_are_my_functions}
@@ -76,15 +76,18 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
   \end{marginfigure}
   % subsection talking_our_language (end)
 
-\subsection{See also} % (fold)
-  \label{sub:see_also}
+\subsection{Additional resources} % (fold)
+  \label{sub:additional_resources}
+  Please cite our paper\cite{van2014scikit} if you find \ski useful! The \ski website is located at \url{skimage.org/docs/stable}, including an API reference, user guide, and a gallery of examples. Issue tracking and development occur on GitHub at \url{github.com/scikit-image/scikit-image}. Please fork \ski\ -- your pull requests are appreciated!\\\medskip
 
-  % subsection see_also (end)
+  \noindent
+  Interact with the community in our \texttt{gitter.im} chat room located at \url{gitter.im/scikit-image/scikit-image} or post on our Google Group at \url{groups.google.com/forum/#!forum/scikit-image}.
+  % subsection additional_resources (end)
 
 \newpage
 \section{Road map to \ski} % (fold)
   \label{sec:road_map}
-  \textsc{For the new user} -- who may be accustomed to having all functionality available from the main namespace like \np or \textsc{matlab} -- finding your way around may be intimidating. Below are brief descriptions of each subpackage available in \ski \release, which group features used for common purposes.
+  Below are brief descriptions of each subpackage available in \ski \release, grouping features used for similar purposes.
 
   \begin{marginfigure}[1.9cm]%
     \includegraphics[width=\linewidth]{astronaut.png}
@@ -92,42 +95,42 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
   \end{marginfigure}
 
   \begin{description}
-    \item[\pyv{skimage.color}] \textit{Color conversions.}
+    \item[\pyv{skimage.color}] Color conversions.
     \begin{description}
       \item[\pyv{rgb2gray}] Convert a red-green-blue color image to grayscale.
       \item[\pyv{separate_stains}] Decompose color image into pathology stains.
     \end{description}
-    \item[\pyv{skimage.data}] \textit{Test images.}
+    \item[\pyv{skimage.data}] Test images.
     \begin{description}
       \item[\pyv{astronaut}] Image of the astronaut Eileen Collins\footnote[1][-0.3cm]{The \texttt{astronaut} test image. Please use this image in place of \texttt{lena}.}.
-      \item[\pyv{camera}] The ever--present cameraman.
     \end{description}
-    \item[\pyv{skimage.draw}] \textit{Drawing primitives such as lines or text.}
-    \item[\pyv{skimage.exposure}] \textit{Intensity and contrast adjustments.}
-    \item[\pyv{skimage.feature}] \textit{Feature detection and extraction.}
-    \item[\pyv{skimage.filters}] \textit{Whole-image changes like sharpening.}
-    \item[\pyv{skimage.future}] \textit{The bleeding edge, with potentially unstable API}
-    \item[\pyv{skimage.graph}] \textit{Graph theory, shortest cost paths.}
-    \item[\pyv{skimage.io}] \textit{Read, save, and display images.}
-    \item[\pyv{skimage.measure}] \textit{Quantify image properties (length, shape).}
-    \item[\pyv{skimage.morphology}] \textit{Morphological operations like erosion and dilation.}
-    \item[\pyv{skimage.novice}] \textit{Simplified teaching interface.}
-    \item[\pyv{skimage.restoration}] \textit{Remove noise or deconvolve images.}
-    \item[\pyv{skimage.segmentation}] \textit{Partition an image into multiple regions.}
-    \item[\pyv{skimage.transform}] \textit{Warp or rotate images.}
+    \item[\pyv{skimage.draw}] Drawing primitives such as lines or text.
+    \item[\pyv{skimage.exposure}] Intensity and contrast adjustments.
+    \item[\pyv{skimage.feature}] Feature detection and extraction.
+    \item[\pyv{skimage.filters}] Whole-image changes like sharpening.
+    \item[\pyv{skimage.future}] The bleeding edge, with potentially unstable API.
+    \item[\pyv{skimage.graph}] Graph theory, shortest paths.
+    \item[\pyv{skimage.io}] Read, save, and display images.
+    \item[\pyv{skimage.measure}] Quantify image properties (length, shape).
+    \item[\pyv{skimage.morphology}] Morphological operations like erosion and dilation.
+    \item[\pyv{skimage.novice}] Simplified teaching interface.
+    \item[\pyv{skimage.restoration}] Remove noise or deconvolve images.
+    \item[\pyv{skimage.segmentation}] Partition an image into multiple regions.
+    \item[\pyv{skimage.transform}] Warp or rotate images.
     \begin{description}
       \item[\pyv{radon/iradon}] The Radon transform and its inverse.
     \end{description}
-    \item[\pyv{skimage.util}] \textit{Common public utility functions.}
+    \item[\pyv{skimage.util}] Common public utility functions.
     \begin{description}
       \item[\pyv{random_noise}] Make an existing image noisy.
       \item[\pyv{pad/crop}] Fast array padding/cropping.
     \end{description}
-    \item[\pyv{skimage.viewer}] \textit{QT-based interactive GUI.}
+    \item[\pyv{skimage.viewer}] QT-based interactive GUI.
   \end{description}
   % section road_map (end)
 
-% Consider dropping this at the end of the 1st page?
+\newpage
+% Bibliography
 \bibliography{bibliography}
 \bibliographystyle{plainnat}
 
