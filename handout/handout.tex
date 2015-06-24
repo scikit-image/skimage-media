@@ -109,8 +109,16 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
 \newpage%
 \section{Road map to \ski} % (fold)
   \label{sec:road_map}
-  Brief descriptions of every subpackage in \ski \release follow. Each subpackage contains algorithms used for similar purposes.%
-  %
+  Brief descriptions of every subpackage in \ski \release follow. Each subpackage contains algorithms used for similar purposes.\\
+
+  % Horizontal line
+  \noindent%
+  \begingroup%
+    \begin{center}%
+      \textcolor{DarkGray}{\rule{0.7\textwidth}{.4pt}}\\%
+    \end{center}%
+  \endgroup%
+
   % Astronaut test image example
   \begin{marginfigure}[0cm]%
     \includegraphics[width=\linewidth]{astronaut.png}%
@@ -124,20 +132,20 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
     \end{description}
     \item[skimage.data] Test images.
     \begin{description}
-      \item[astronaut] Image of the astronaut Eileen Collins\footnote[2][0.3cm]{The \textcolor{DarkBlue}{\texttt{astronaut}} test image. Please use this image in place of \textcolor{DarkBlue}{\texttt{lena}}.}.
+      \item[astronaut] Image of the astronaut Eileen Collins\footnote[2][-0.2cm]{The \textcolor{DarkBlue}{\texttt{astronaut}} test image. Please use this image in place of \textcolor{DarkBlue}{\texttt{lena}}.}.
     \end{description}
     \item[skimage.draw] Drawing primitives such as lines or text.
     \item[skimage.exposure] Intensity and contrast adjustments.
     \item[skimage.feature] Feature detection and extraction.
     \begin{description}
       % Blob finding example
-      \begin{marginfigure}[0.1cm]%
+      \begin{marginfigure}[-0.3cm]%
         \includegraphics[width=\linewidth]{doh_galaxies.png}%
         \label{fig:doh_galaxies}%
       \end{marginfigure}%
       %
       \item[ORB] Used in the panorama tutorial along with \pyblue{match_descriptors}.
-      \item[blob_*] Tunable blob detectors\footnote[3][0.2cm]{Blob detection in the Hubble Deep Field with \textcolor{DarkBlue}{\texttt{blob\_doh}}.}.
+      \item[blob_*] Tunable blob detectors\footnote[3][0.1cm]{Blob detection in the Hubble Deep Field with \textcolor{DarkBlue}{\texttt{blob\_doh}}.}.
     \end{description}
     \item[skimage.filters] Whole-image changes like sharpening. \hfill \\See also the rank filters in \pyv{skimage.filters.rank}.
     \item[skimage.future] The bleeding edge, with potentially unstable API.
@@ -146,12 +154,12 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
     \item[skimage.measure] Quantify image properties (length, shape).
     \begin{description}
       % Hough transform example
-      \begin{marginfigure}[-2.9cm]%
+      \begin{marginfigure}[-3.3cm]%
         \includegraphics[width=\linewidth]{hough_lines.png}%
         \label{fig:hough_lines}%
       \end{marginfigure}%
       %
-      \item[hough_line] Find lines in an image\footnote[4][-0.5cm]{Hough transforms can detect lines (above), circles, or ellipses.}. Circle, ellipse also available.
+      \item[hough_line] Find lines in an image\footnote[4][-0.7cm]{Hough transforms can detect lines (above), circles, or ellipses.}. Circle, ellipse also available.
     \end{description}
     \item[skimage.morphology] Morphological operations, \eg, dilation and erosion. Binary and grayscale morphology supported.
     \item[skimage.novice] Simplified teaching interface.
@@ -164,17 +172,17 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
         \label{fig:felzenszwalb}%
       \end{marginfigure}%
       %
-      \item[felzenszwalb] Segment based on local contrast\footnote[5][0cm]{Automated segmentation using \textcolor{DarkBlue}{\texttt{felzenszwalb}}'s method.}. \hfill \\See also: \pyblue{slic}, \pyblue{quickshift}, and \pyblue{random_walker}.
+      \item[felzenszwalb] Segment based on local contrast\footnote[5][0.05cm]{Automated segmentation using \textcolor{DarkBlue}{\texttt{felzenszwalb}}'s method.}. \hfill \\See also: \pyblue{slic}, \pyblue{quickshift}, and \pyblue{random_walker}.
     \end{description}
     \item[skimage.transform] Warp or rotate images.
     \begin{description}
       % Affine transformation example
-      \begin{marginfigure}[0cm]%
+      \begin{marginfigure}[0.1cm]%
         \includegraphics[width=\linewidth]{warp_affine.png}%
         \label{fig:affine}%
       \end{marginfigure}%
       %
-      \item[warp] Geometric and affine\footnote[6][0cm]{\textcolor{DarkBlue}{\texttt{PiecewiseAffineTransform}} applied to the \textcolor{DarkBlue}{\texttt{astronaut}} with \textcolor{DarkBlue}{\texttt{warp}}.} transformations, a variety of which are exposed in this subpackage.
+      \item[warp] Geometric and affine\footnote[6][0.05cm]{\textcolor{DarkBlue}{\texttt{PiecewiseAffineTransform}} applied to the \textcolor{DarkBlue}{\texttt{astronaut}} with \textcolor{DarkBlue}{\texttt{warp}}.} transformations, a variety of which are exposed in this subpackage.
     \end{description}
     \item[skimage.util] Common public utility functions.
     \begin{description}
