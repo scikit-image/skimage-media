@@ -1,6 +1,6 @@
 .PHONY: all
 
-all: clean figs handout
+all: clean handout
 
 clean:
 	find . -name "*.pytxcode" -type f -delete;			\
