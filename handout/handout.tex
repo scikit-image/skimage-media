@@ -1,5 +1,5 @@
 % -------------------------------------------------------------------------- %
-% Style used is derived from the tufte-handout style available on GitHub at
+% Style is derived from the tufte-handout style available on GitHub at
 % https://github.com/Tufte-LaTeX/tufte-latex
 % License: Apache 2.0
 \documentclass[nohyper, % Turn off defaults, customize hyperref locally
@@ -7,12 +7,16 @@
 
 % -------------------------------------------------------------------------- %
 % Define document-specific macros here
+\newcommand{\release}{0.11.3\xspace} % Update with new version
 \DeclareRobustCommand{\ski}{\texttt{scikit-image}\xspace}
 \DeclareRobustCommand{\spy}{SciPy\xspace} % Sadly, \sp is reserved (superscript)
 \DeclareRobustCommand{\np}{NumPy\xspace}
-% \newcommand{\release}{\pyc{import skimage;print(skimage.__version__)}\xspace}
-\newcommand{\release}{0.11.3\xspace}
 \newcommand{\eg}{e.g.\xspace}
+\newcommand{\rgb}{\textcolor{Red}{R}\textcolor{Green}{G}\textcolor{Blue}{B}}
+\newcommand*{\vcenteredhbox}[1]{\begingroup
+\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
+\newcommand{\pyblue}[1]{\textcolor{DarkBlue}{\pyv{#1}}}
+
 
 % -------------------------------------------------------------------------- %
 % Definitions used throughout the package
@@ -20,20 +24,22 @@
 \author[the \ski contributors]{the \ski contributors}
 \date{6 July 2015} % Specify date, or comment out to use current date
 
+
 % -------------------------------------------------------------------------- %
 % Slightly tweak page layout so title fits on one line
 \newgeometry{textwidth=27pc,      % 1pc wider than default
              marginparwidth=11pc, % 1pc narrower than default
-             letterpaper,
              left=1in,
              top=1in,
              headsep=2\baselineskip,
              marginparsep=2pc,
-             textheight=44\baselineskip,
+             textheight=45\baselineskip,
              headheight=\baselineskip}
+
 
 % Layout debugging
 % \usepackage{showframe} % uncomment to debug page layout
+
 
 % -------------------------------------------------------------------------- %
 % Begin!
@@ -63,14 +69,14 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
     \label{fig:tux_inset}
   \end{marginfigure}
 
-  An image is simply a collection of data on a regular, two-dimensional grid. In \ski, we use \np arrays to represent images. Color images have more than one channel, \eg, red, green, and blue (RGB). Thus, the \np array for a color image is three-dimensional, with channel information in the final dimension.
+  An image is simply a collection of data on a regular, two-dimensional grid. In \ski, we use \np arrays to represent images. Color images have more than one channel, \eg, red, green, and blue (\rgb). Thus, the \np array for a color image is \textit{three}-dimensional, with channel information in the final dimension.
   % subsection images_are_arrays (end)
 
 \subsection{Talking our language} % (fold)
   \label{sub:talking_our_language}
   To avoid confusion, we refrain from using the terms \textit{x} or \textit{y}. Throughout the package, \ski refers to \textit{rows} (r) and \textit{columns} (c). When color data is present, \textit{channel} (ch) denotes the third dimension. \np arrays representing images are indexed via \pyv{arr[rows, columns]}.
-
-  \begin{marginfigure}[-1.3cm]%
+  %
+  \begin{marginfigure}[-1.1cm]%
     \includegraphics[width=\linewidth]{row-col.png}
     \label{fig:row-col}
   \end{marginfigure}
@@ -78,54 +84,103 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
 
 \subsection{Additional resources} % (fold)
   \label{sub:additional_resources}
-  Please cite our paper\cite{van2014scikit} if you find \ski useful! The \ski website is located at \url{skimage.org/docs/stable}, including an API reference, user guide, and a gallery of examples. Issue tracking and development occur on GitHub at \url{github.com/scikit-image/scikit-image}. Please fork \ski\ -- your pull requests are appreciated!\\\medskip
-
+  The \ski website is located at \url{skimage.org/docs/stable}, including an API reference, user guide, and a gallery of examples. Development and issue tracking occur on the GitHub project page \url{github.com/scikit-image/scikit-image}. Pull requests are welcome!\\\medskip
+  %
+  \begin{marginfigure}[-1.7cm]%
+    \centering%
+    \begingroup
+      \vcenteredhbox{\includegraphics[height=0.59cm]{GitHub-Mark-large.png}}%
+      \vcenteredhbox{\includegraphics[height=1cm]{GitHub-Logo.png}}%
+    \endgroup
+    \label{fig:GitHub}%
+  \end{marginfigure}%
+  %
   \noindent
-  Interact with the community in our \texttt{gitter.im} chat room located at \url{gitter.im/scikit-image/scikit-image} or post on our Google Group at \url{groups.google.com/forum/#!forum/scikit-image}.
+  Interact with the community in the \ski Gitter chat room at \url{gitter.im/scikit-image/scikit-image} or post to the Google Group at \url{groups.google.com/forum/#!forum/scikit-image}.
   % subsection additional_resources (end)
 
-\newpage
+\subsection{A humble request} % (fold)
+  \label{sub:a_humble_request}
+  Please cite the \ski paper\cite{van2014scikit} if you find this package useful! Citations allow developers to justify work to their superiors.
+  % subsection a_humble_request (end)
+
+% -------------------------------------------------------------------------- %
+% Reverse side: Road map to the package
+\newpage%
 \section{Road map to \ski} % (fold)
   \label{sec:road_map}
-  Below are brief descriptions of each subpackage available in \ski \release, grouping features used for similar purposes.
-
-  \begin{marginfigure}[1.9cm]%
-    \includegraphics[width=\linewidth]{astronaut.png}
-    \label{fig:astronaut}
-  \end{marginfigure}
-
-  \begin{description}
-    \item[\pyv{skimage.color}] Color conversions.
+  Brief descriptions of every subpackage in \ski \release follow. Each subpackage contains algorithms used for similar purposes.%
+  %
+  % Astronaut test image example
+  \begin{marginfigure}[0cm]%
+    \includegraphics[width=\linewidth]{astronaut.png}%
+    \label{fig:astronaut}%
+  \end{marginfigure}%
+  %
+  \begin{description}%
+    \item[skimage.color] Color conversions.
     \begin{description}
-      \item[\pyv{rgb2gray}] Convert a red-green-blue color image to grayscale.
-      \item[\pyv{separate_stains}] Decompose color image into pathology stains.
+      \item[rgb2gray] Convert a red-green-blue (\rgb) color image to grayscale.
     \end{description}
-    \item[\pyv{skimage.data}] Test images.
+    \item[skimage.data] Test images.
     \begin{description}
-      \item[\pyv{astronaut}] Image of the astronaut Eileen Collins\footnote[1][-0.3cm]{The \texttt{astronaut} test image. Please use this image in place of \texttt{lena}.}.
+      \item[astronaut] Image of the astronaut Eileen Collins\footnote[2][0.3cm]{The \textcolor{DarkBlue}{\texttt{astronaut}} test image. Please use this image in place of \textcolor{DarkBlue}{\texttt{lena}}.}.
     \end{description}
-    \item[\pyv{skimage.draw}] Drawing primitives such as lines or text.
-    \item[\pyv{skimage.exposure}] Intensity and contrast adjustments.
-    \item[\pyv{skimage.feature}] Feature detection and extraction.
-    \item[\pyv{skimage.filters}] Whole-image changes like sharpening.
-    \item[\pyv{skimage.future}] The bleeding edge, with potentially unstable API.
-    \item[\pyv{skimage.graph}] Graph theory, shortest paths.
-    \item[\pyv{skimage.io}] Read, save, and display images.
-    \item[\pyv{skimage.measure}] Quantify image properties (length, shape).
-    \item[\pyv{skimage.morphology}] Morphological operations like erosion and dilation.
-    \item[\pyv{skimage.novice}] Simplified teaching interface.
-    \item[\pyv{skimage.restoration}] Remove noise or deconvolve images.
-    \item[\pyv{skimage.segmentation}] Partition an image into multiple regions.
-    \item[\pyv{skimage.transform}] Warp or rotate images.
+    \item[skimage.draw] Drawing primitives such as lines or text.
+    \item[skimage.exposure] Intensity and contrast adjustments.
+    \item[skimage.feature] Feature detection and extraction.
     \begin{description}
-      \item[\pyv{radon/iradon}] The Radon transform and its inverse.
+      % Blob finding example
+      \begin{marginfigure}[0.1cm]%
+        \includegraphics[width=\linewidth]{doh_galaxies.png}%
+        \label{fig:doh_galaxies}%
+      \end{marginfigure}%
+      %
+      \item[ORB] Used in the panorama tutorial along with \pyblue{match_descriptors}.
+      \item[blob_*] Tunable blob detectors\footnote[3][0.2cm]{Blob detection in the Hubble Deep Field with \textcolor{DarkBlue}{\texttt{blob\_doh}}.}.
     \end{description}
-    \item[\pyv{skimage.util}] Common public utility functions.
+    \item[skimage.filters] Whole-image changes like sharpening. \hfill \\See also the rank filters in \pyv{skimage.filters.rank}.
+    \item[skimage.future] The bleeding edge, with potentially unstable API.
+    \item[skimage.graph] Graph theory, shortest paths.
+    \item[skimage.io] Read (\pyv{imread}), save (\pyv{imsave}), and display images.
+    \item[skimage.measure] Quantify image properties (length, shape).
     \begin{description}
-      \item[\pyv{random_noise}] Make an existing image noisy.
-      \item[\pyv{pad/crop}] Fast array padding/cropping.
+      % Hough transform example
+      \begin{marginfigure}[-2.9cm]%
+        \includegraphics[width=\linewidth]{hough_lines.png}%
+        \label{fig:hough_lines}%
+      \end{marginfigure}%
+      %
+      \item[hough_line] Find lines in an image\footnote[4][-0.5cm]{Hough transforms can detect lines (above), circles, or ellipses.}. Circle, ellipse also available.
     \end{description}
-    \item[\pyv{skimage.viewer}] QT-based interactive GUI.
+    \item[skimage.morphology] Morphological operations, \eg, dilation and erosion. Binary and grayscale morphology supported.
+    \item[skimage.novice] Simplified teaching interface.
+    \item[skimage.restoration] Remove noise or deconvolve images.
+    \item[skimage.segmentation] Partition an image into multiple regions.
+    \begin{description}
+      % Felzenszwalb segmentation example
+      \begin{marginfigure}[-1.5cm]%
+        \includegraphics[width=\linewidth]{felzenszwalb.png}%
+        \label{fig:felzenszwalb}%
+      \end{marginfigure}%
+      %
+      \item[felzenszwalb] Segment based on local contrast\footnote[5][0cm]{Automated segmentation using \textcolor{DarkBlue}{\texttt{felzenszwalb}}'s method.}. \hfill \\See also: \pyblue{slic}, \pyblue{quickshift}, and \pyblue{random_walker}.
+    \end{description}
+    \item[skimage.transform] Warp or rotate images.
+    \begin{description}
+      % Affine transformation example
+      \begin{marginfigure}[0cm]%
+        \includegraphics[width=\linewidth]{warp_affine.png}%
+        \label{fig:affine}%
+      \end{marginfigure}%
+      %
+      \item[warp] Geometric and affine\footnote[6][0cm]{\textcolor{DarkBlue}{\texttt{PiecewiseAffineTransform}} applied to the \textcolor{DarkBlue}{\texttt{astronaut}} with \textcolor{DarkBlue}{\texttt{warp}}.} transformations, a variety of which are exposed in this subpackage.
+    \end{description}
+    \item[skimage.util] Common public utility functions.
+    \begin{description}
+      \item[pad/crop] Image padding/cropping.
+    \end{description}
+    \item[skimage.viewer] QT-based interactive GUI.
   \end{description}
   % section road_map (end)
 
