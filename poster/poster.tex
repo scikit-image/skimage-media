@@ -1,0 +1,176 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% baposter Landscape Poster
+% LaTeX Template
+% Version 1.0 (11/06/13)
+%
+% baposter Class Created by:
+% Brian Amberg (baposter@brian-amberg.de)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[landscape,a0paper,fontscale=0.285]{baposter} % Adjust the font scale/size here
+
+\usepackage{graphicx} % Required for including images
+
+\usepackage{amsmath} % For typesetting math
+\usepackage{amssymb} % Adds new symbols to be used in math mode
+\usepackage{xspace} % Smart spacing for use at end of macros
+\usepackage{minted}
+
+\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{enumitem} % Used to reduce itemize/enumerate spacing
+\usepackage{palatino} % Use the Palatino font
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+\usepackage{multicol} % Required for multiple columns
+\setlength{\columnsep}{1.5em} % Slightly increase the space between columns
+\setlength{\columnseprule}{0mm} % No horizontal rule between columns
+
+\usepackage{tikz} % Required for flow chart
+\usetikzlibrary{shapes,arrows} % Tikz libraries required for the flow chart in the template
+
+\newcommand{\compresslist}{ % Define a command to reduce spacing within itemize/enumerate environments, this is used right after \begin{itemize} or \begin{enumerate}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+}
+
+\newcommand{\release}{0.11.3\xspace} % Update with new version
+\newcommand{\ski}{\texttt{scikit-image}\xspace}
+\newcommand{\spy}{SciPy\xspace} % Sadly, \sp is reserved (superscript)
+\newcommand{\np}{NumPy\xspace}
+\newcommand{\datetime}{6 July 2015\xspace}
+\newcommand{\codespacebefore}{\\[2pt]}
+\newcommand{\codespaceafter}{\\[8pt]}
+\newcommand{\eg}{e.g.\xspace}
+
+\include{codestyle}
+
+\begin{document}
+
+\begin{poster}
+{
+headerborder=closed, % Adds a border around the header of content boxes
+colspacing=1em, % Column spacing
+bgColorOne=white, % Background color for the gradient on the left side of the poster
+bgColorTwo=white, % Background color for the gradient on the right side of the poster
+borderColor=black, % Border color
+headerColorOne=gray, % Background color for the header in the content boxes (left side)
+headerColorTwo=gray, % Background color for the header in the content boxes (right side)
+headerFontColor=white, % Text color for the header text in the content boxes
+boxColorOne=white, % Background color of the content boxes
+textborder=roundedleft, % Format of the border around content boxes, can be: none, bars, coils, triangles, rectangle, rounded, roundedsmall, roundedright or faded
+eyecatcher=true, % Set to false for ignoring the left logo in the title and move the title left
+headerheight=0.1\textheight, % Height of the header
+headershape=roundedright, % Specify the rounded corner in the content box headers, can be: rectangle, small-rounded, roundedright, roundedleft or rounded
+headerfont=\Large\bf\textsc, % Large, bold and sans serif font in the headers of content boxes
+%textfont={\setlength{\parindent}{1.5em}}, % Uncomment for paragraph indentation
+linewidth=1.5pt % Width of the border lines around content boxes
+}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+{\includegraphics[height=4em]{figures/green_orange_snake.png}}
+{\bf \ski: \textit{the image processing toolkit for \spy}\vspace{0.5em}}
+{\textsc{\{the \ski contributors\}} \hspace{12pt} \url{http://scikit-image.org} \hspace{12pt}Version \release }
+{\includegraphics[height=4em]{figures/green_orange_snake.png}}
+
+\headerbox{Introduction}{name=introduction,column=0,row=0}{
+\ski is a collection of algorithms for image processing. It is available free of charge and free of restriction. We pride ourselves on high-quality, peer-reviewed code, written by an active community of volunteers.
+
+The project started in August of 2009 and has received contributions from more than 100 individuals. The source code is mainly written in Python, although certain performance critical sections are implemented in Cython.
+}
+
+\headerbox{Getting Started}{name=getting-started,column=0,row=1,below=introduction}{
+\ski is an image processing Python package that works with \np arrays. The package is imported as:
+\codespacebefore
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{k+kn}{import} \PY{n+nn}{skimage}
+\codespaceafter
+Most functions of \ski are found within submodules:
+\codespacebefore
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{k+kn}{from} \PY{n+nn}{skimage} \PY{k+kn}{import} \PY{n}{data}\\
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{n}{camera} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{camera}\PY{p}{(}\PY{p}{)}
+\codespaceafter
+Within \ski, images are represented as \np arrays, for example 2-D arrays for grayscale 2-D images:
+\codespacebefore
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{n+nb}{type}\PY{p}{(}\PY{n}{camera}\PY{p}{)}\\
+\PY{o}{\PYZlt{}}\PY{n+nb}{type} \PY{l+s}{\PYZsq{}}\PY{l+s}{numpy.ndarray}\PY{l+s}{\PYZsq{}}\PY{o}{\PYZgt{}}\\
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{c}{\PYZsh{} An image with 512 rows and 512 columns}\\
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{n}{camera}\PY{o}{.}\PY{n}{shape}\\
+\PY{p}{(}\PY{l+m+mi}{512}\PY{p}{,} \PY{l+m+mi}{512}\PY{p}{)}
+\codespaceafter
+The \texttt{skimage.data} module provides a set of functions returning example images, that can be used to get started quickly on using \ski's functions:
+\codespacebefore
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{n}{coins} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{coins}\PY{p}{(}\PY{p}{)}\\
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{k+kn}{from} \PY{n+nn}{skimage} \PY{k+kn}{import} \PY{n}{filters}\\
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{n}{filters}\PY{o}{.}\PY{n}{threshold\PYZus{}otsu}\PY{p}{(}\PY{n}{coins}\PY{p}{)}\\
+\PY{l+m+mi}{107}
+\codespaceafter
+Of course, it is also possible to load your own images as NumPy arrays from image files:
+\codespacebefore
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{k+kn}{import} \PY{n+nn}{os}\\
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{n}{filename} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{the/path/to/moon.png}\PY{l+s}{\PYZsq{}}\\
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{k+kn}{from} \PY{n+nn}{skimage} \PY{k+kn}{import} \PY{n}{io}\\
+\PY{o}{\PYZgt{}\PYZgt{}}\PY{o}{\PYZgt{}} \PY{n}{moon} \PY{o}{=} \PY{n}{io}\PY{o}{.}\PY{n}{imread}\PY{p}{(}\PY{n}{filename}\PY{p}{)}
+\vspace{5pt}
+}
+
+\headerbox{Module overview}{name=modules,column=1,row=0}{
+The package includes many algorithms with broad applications across image processing, from computer vision to medical image analysis. In the following, we present a subset of the available modules using short usage examples. We refer the reader to the current API documentation for a full listing of current capabilities.
+}
+
+\headerbox{\texttt{skimage.color}}{name=color,column=1,row=1,below=modules}{
+Color conversions, \eg RGB to grayscale:
+
+\includegraphics[height=4em]{figures/green_orange_snake.png}
+}
+
+\headerbox{\texttt{skimage.draw}}{name=draw,column=1,row=1,below=color}{
+Drawing primitives such as lines or text.
+}
+
+\headerbox{\texttt{skimage.exposure}}{name=exposure,column=1,row=1,below=draw}{
+
+}
+
+\headerbox{\texttt{skimage.feature}}{name=feature,column=1,row=1,below=exposure}{
+
+}
+
+\headerbox{\texttt{skimage.filters}}{name=filters,column=1,row=1,below=feature}{
+
+}
+
+\headerbox{\texttt{skimage.future}}{name=future,column=1,row=1,below=filters}{
+
+}
+
+\headerbox{\texttt{skimage.graph}}{name=graph,column=1,row=1,below=filters}{
+
+}
+
+\headerbox{\texttt{skimage.io}}{name=io,column=1,row=1,below=filters}{
+
+}
+
+\headerbox{\texttt{skimage.measure}}{name=measure,column=1,row=1,below=io}{
+
+}
+
+\headerbox{\texttt{skimage.morphology}}{name=morphology,column=1,row=1,below=measure}{
+
+}
+
+\end{poster}
+
+\end{document}
