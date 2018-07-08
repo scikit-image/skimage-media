@@ -8,7 +8,7 @@
 % -------------------------------------------------------------------------- %
 % Define document-specific macros here
 \newcommand{\release}{0.14\xspace} % Update with new version
-\DeclareRobustCommand{\ski}{\texttt{scikit-image}\xspace}
+\DeclareRobustCommand{\ski}{scikit-image\xspace}
 \DeclareRobustCommand{\spy}{SciPy\xspace} % Sadly, \sp is reserved (superscript)
 \DeclareRobustCommand{\np}{NumPy\xspace}
 \newcommand{\eg}{e.g.\xspace}
@@ -33,7 +33,7 @@
              top=1in,
              headsep=2\baselineskip,
              marginparsep=2pc,
-             textheight=45\baselineskip,
+             textheight=46\baselineskip,
              headheight=\baselineskip}
 
 
@@ -96,7 +96,7 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
   \end{marginfigure}%
   %
   \noindent
-  Interact with the community in the \ski Gitter chat room at \url{gitter.im/scikit-image/scikit-image} or post to the Google Group at \url{groups.google.com/forum/#!forum/scikit-image}.
+  Interact with the community in the \ski Gitter chat room at \url{gitter.im/scikit-image/scikit-image}, post/subscribe to the mailing list at \url{mail.python.org/mailman/listinfo/scikit-image}, or tag scikit-image on StackOverflow for assistance.
   % subsection additional_resources (end)
 
 \subsection{A humble request} % (fold)
@@ -105,11 +105,11 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
   % subsection a_humble_request (end)
 
 % -------------------------------------------------------------------------- %
-% Reverse side: Road map to the package
+% Reverse side: Guide to the package
 \newpage%
-\section{Road map to \ski} % (fold)
-  \label{sec:road_map}
-  Brief descriptions of every subpackage in \ski \release follow. Each subpackage contains algorithms used for similar purposes.\\
+\section{Guide to \ski} % (fold)
+  \label{sec:guide}
+  Brief descriptions of every subpackage in \ski \release follow. Each subpackage contains algorithms used for similar purposes. You can also search package docstrings with \textcolor{DarkBlue}{\texttt{skimage.lookfor}}.\\
 
   % Horizontal line
   \noindent%
@@ -160,9 +160,9 @@ Welcome to \ski! This handout is designed to supplement and enhance the \ski tut
       \end{marginfigure}%
       %
       \item[hough_line] Find lines in an image\footnote[4][-0.7cm]{Hough transforms can detect lines (above), circles, or ellipses.}. Circle, ellipse also available.
+      \item[regionprops] Calculate many properties in a labeled image.
     \end{description}
     \item[skimage.morphology] Morphological operations, \eg, dilation and erosion. Binary and grayscale morphology supported.
-    \item[skimage.novice] Simplified teaching interface.
     \item[skimage.restoration] Remove noise or deconvolve images.
     \item[skimage.segmentation] Partition an image into multiple regions.
     \begin{description}
